@@ -10,5 +10,7 @@ namespace dev.Application.Common.Interfaces.IServices
     public interface IAppSettingService
     {
         Task<List<AppSetting>> GetAll();
+        Task<List<AppSetting>> GetAllFromJson();
+        Task Add(AppSetting appSetting);
     }
 }

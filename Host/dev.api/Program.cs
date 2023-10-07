@@ -2,6 +2,7 @@ using dev.Application.Common.Interfaces.IRepos;
 using dev.Application.Common.Interfaces.IServices;
 using dev.Application.Common.Services;
 using dev.Infrastructure;
+using dev.Infrastructure.Presistence;
 using dev.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +18,8 @@ builder.Services.AddPresistence(builder.Configuration);
 
 //
 builder.Services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
+builder.Services.AddScoped(typeof(IFileStorageRepository<>), typeof(FileStoreRepository<>));
+builder.Services.AddScoped(typeof(ApplicationJsonDataContext<>));
 builder.Services.AddScoped<IAppSettingService, AppSettingService>();
 
 var app = builder.Build();
